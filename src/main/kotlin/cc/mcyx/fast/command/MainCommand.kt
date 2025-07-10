@@ -18,7 +18,7 @@ object MainCommand : BaseCommand(
                 p0.sendMessage(LangConfig.lang("错误的参数"))
                 return false
             }
-            val switch = p2.get(0) ?: ""
+            val switch = p2[0] ?: ""
             when (switch) {
                 "back" -> {
                     WorldService.spawn(p0.player)
@@ -35,7 +35,7 @@ object MainCommand : BaseCommand(
     }
 
     override fun tabComplete(sender: CommandSender?, alias: String?, args: Array<out String>): List<String?> {
-        return listOf("back", "quit").filter { it.startsWith(args[0].toString()) }
+        return listOf("back", "quit").filter { it.startsWith(args[0].toString().lowercase()) }
     }
 
 }
